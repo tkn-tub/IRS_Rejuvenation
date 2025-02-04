@@ -16,6 +16,9 @@ p_focus = Param.p_focus;
 
 Dp_y = Param.Dp_y;
 Dp_z = Param.Dp_z;
+
+R=Param.R;
+
 lambda = Param.lambda;
 
 gtilde = 4*pi*dy*dz/(lambda^2); % unit-less unit-cell factor
@@ -35,8 +38,29 @@ z_IRS = p_IRS(3)+linspace(-Lz/2,Lz/2,Qz); % position of IRS elements
 [yy_IRS,zz_IRS] = meshgrid(y_IRS,z_IRS); 
 
 Map_p(:,:,1) = p_focus(1)*ones(Qy,Qz); % x of p_focus extended
-Map_p(:,:,2) = p_focus(2)+(yy_IRS-p_IRS(2))/L*Dp_y; % y of p_focus extended
-Map_p(:,:,3) = p_focus(3)+(zz_IRS-p_IRS(3))/L*Dp_z; % z of p_focus extended
+% Normalize rectangle coordinates to [-1, 1] range
+yy_IRS_norm=2*(yy_IRS-p_IRS(2))/Ly;
+zz_IRS_norm=2*(zz_IRS-p_IRS(3))/Ly;
+% Map the unit-square to the unit-circle
+yy_IRS_circle_norm=yy_IRS_norm.*sqrt(1-yy_IRS_norm.^2/2);
+zz_IRS_circle_norm=zz_IRS_norm.*sqrt(1-zz_IRS_norm.^2/2);
+% % Adjust radius for smooth mapping (preserve proportions)
+[theta,rho]=cart2pol(yy_IRS_circle_norm,zz_IRS_circle_norm);
+% % Scale to the desired circle radius R
+[yy_IRS_circle , zz_IRS_circle]= pol2cart(theta,rho);
+% % Adjust radius for smooth mapping (preserve proportions)
+[theta,rho]=cart2pol(yy_IRS_circle,zz_IRS_circle);
+%
+% % Scale to the desired circle radius R
+[Map_p(:,:,2) , Map_p(:,:,3)]= pol2cart(theta,R*rho);
+
+% Map_p(:,:,2) = p_focus(2)+(yy_IRS-p_IRS(2))/L*Dp_y; % y of p_focus extended
+% Map_p(:,:,3) = p_focus(3)+(zz_IRS-p_IRS(3))/L*Dp_z; % z of p_focus extended
+
+figure;
+scatter(reshape(Map_p(:,:,2),1,[]), reshape(Map_p(:,:,3),1,[]), 5, 'filled');
+title('Points Mapped to Circle');
+axis equal;
 
 p_IRS_extended(:,:,1) = ones(Qy,Qz)*p_IRS(1); 
 p_IRS_extended(:,:,2) = ones(Qy,Qz)*p_IRS(2); 
