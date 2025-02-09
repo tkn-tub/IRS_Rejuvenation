@@ -5,38 +5,45 @@
 
 function [g_irs] =  func_g_IRS_near(Param)
 
+Lx = Param.Lx;
 Ly = Param.Ly;
-Lz = Param.Lz;
+dx = Param.dx;
 dy = Param.dy;
-dz = Param.dz;
 lambda = Param.lambda;
 
 p_IRS = Param.p_IRS;
-p_BS = Param.p_BS;
+%p_AP = Param.p_AP;
 p_obs = Param.p_obs;
 
 IRS_phase = Param.IRS_phase;
 
-gtilde = 4*pi*dy*dz/(lambda^2); % unit-less unit-cell factor
+gtilde = 4*pi*dy*dx/(lambda^2); % unit-less unit-cell factor
 
 %% g caculation:
 
-[Qy,Qz] = size(IRS_phase);
+[Qx,Qy] = size(IRS_phase);
 
+x_IRS = p_IRS(1)+linspace(-Lx/2,Lx/2,Qx); % position of IRS elements
 y_IRS = p_IRS(2)+linspace(-Ly/2,Ly/2,Qy); % position of IRS elements
-z_IRS = p_IRS(3)+linspace(-Lz/2,Lz/2,Qz); % position of IRS elements
-[yy_IRS,zz_IRS] = meshgrid(y_IRS,z_IRS);
+z_IRS = p_IRS(3);
+[xx_IRS,yy_IRS] = meshgrid(x_IRS,y_IRS);
 
 [N,~] = size(p_obs);
 
-% load phase_inc % The incident phase based on the BS-RIS LOS link is fixed and can be computed once, saved, and used later
-phase_inc=eye(1,Param.Qy);
+%load phase_inc % The incident phase based on the BS-RIS LOS link is fixed and can be computed once, saved, and used later
+phase_inc=eye(1,Qy);
+phase_inc = phase_inc*0;
+
+
+R = Lx/2;
+r2_local_IRS = (xx_IRS-p_IRS(1)).^2+(yy_IRS-p_IRS(2)).^2;
+Index = r2_local_IRS<=R^2;
 
 for ii=1:N
 
-    d_r = sqrt((p_obs(ii,1))^2+(yy_IRS-p_obs(ii,2)).^2+(zz_IRS-p_obs(ii,3)).^2);
+    d_r = sqrt((xx_IRS-p_obs(ii,1)).^2+(yy_IRS-p_obs(ii,2)).^2+(z_IRS - p_obs(ii,3))^2);
     phase_ob = mod(2*pi/lambda*d_r,2*pi); % phase to the observation point
-    g_irs(ii) = gtilde*sum(sum(exp(1j*IRS_phase).*exp(1j*(phase_inc+phase_ob))));
+    g_irs(ii) = gtilde*sum(sum(Index.*exp(1j*IRS_phase).*exp(1j*(phase_inc+phase_ob))));
 
 end
 
