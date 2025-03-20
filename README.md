@@ -8,7 +8,7 @@ The IRS reconfiguration policy is determined with the age of information (AoI) c
 
 <figure>
     <p align="center">
-        <img src="https://github.com/tkn-tub/NN_molecular_communications/blob/main/figures/location.svg?raw=true" alt="nn" width="500">
+        <img src="https://github.com/tkn-tub/IRS_Rejuvenation/blob/main/figures/location.svg?raw=true" alt="nn" width="400">
     </p>
 </figure>
 <p align="center">
@@ -20,11 +20,11 @@ As illustrated in Fig. 2, a the full communication pipeline is integrated for em
 
 <figure>
     <p align="center">
-        <img src="https://github.com/tkn-tub/NN_molecular_communications/blob/main/figures/Tx_Rx_scheme.svg?raw=true" alt="nn" width="500">
+        <img src="https://github.com/tkn-tub/IRS_Rejuvenation/blob/main/figures/Tx_Rx_scheme.svg?raw=true" alt="nn" width="400">
     </p>
 </figure>
 <p align="center">
-Fig. 2: Block diagram for the implemented transmissionreception scheme according to the 802.11ad.
+Fig. 2: Block diagram for the implemented transmission-reception scheme according to the 802.11ad.
 </p>
 
 ## Installation
@@ -59,6 +59,33 @@ Besides, within the current directory there are the following folders:
 - Folder 802.11ad_functions: This folder contains the code to implement the communication pipeline in Fig. 2.
 - Folder AoI_functios: This folder contains the code to evaluate the average peak age of information metric (PAoI).
 - Folder datasets: This folder contains mat files to store intermediate calculations for the average PAoI function.
+
+<figure>
+    <p align="center">
+        <img src="https://github.com/tkn-tub/IRS_Rejuvenation/blob/main/figures/IRS_SNR.svg?raw=true" alt="nn" width="400">
+    </p>
+</figure>
+<p align="center">
+Fig. 3: Heat map of the SNR values for the IRS’s illuminated area.
+</p>
+
+<figure>
+    <p align="center">
+        <img src="https://github.com/tkn-tub/IRS_Rejuvenation/blob/main/figures/BER_802_11_ad_MCS_12.svg?raw=true" alt="nn" width="400">
+    </p>
+</figure>
+<p align="center">
+Fig. 4: Average SNR and BER as evaluated along the perimeter of the circle with radius given in the horizontal axis of this plot.
+</p>
+
+<figure>
+    <p align="center">
+        <img src="https://github.com/tkn-tub/IRS_Rejuvenation/blob/main/figures/PAoI.svg?raw=true" alt="nn" width="400">
+    </p>
+</figure>
+<p align="center">
+Fig. 5:Average peak age of information PAoI with the IRS update period and various radius for the illuminated area.
+</p>
 
 ## Features
 - **Realistic model for IRS-assisted link in WiFi 802.11ad:** This code evaluates a realistic model for the communication performance with the BER.
