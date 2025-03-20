@@ -99,7 +99,8 @@ Interested contributors can contact the project owner. Please refer to the Conta
 ![Licence](https://img.shields.io/github/license/larymak/Python-project-Scripts)
 
 ## Acknowledgements
-We want to acknoledge the support provided by Mohammad Zoofaghari, author of the paper in [1] for giving us the code to generate the dataset.
+We want to thank Dr. Anatolij Zubow from TU Berlin for the valuable comments on this manuscript. This work was
+supported in part by the Federal Ministry of Education and Research (BMBF, Germany) within the 6G Research and Innovation Cluster 6G-RIC under Grant 16KISK020K. Jamali’s work as supported in part by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) within the Collaborative Research Center MAKI (SFB 1053, Project-ID 210487104) and in part by the LOEWE initiative (Hesse, Germany) within the emergenCITY center [LOEWE/1/12/519/03/05.001(0016)/72].
 
 ## References
 <a name="fn1">[1]</a>: Jorge Torres Gómez∗, Joana Angjo∗, Moritz Garkisch†, Vahid Jamali‡, Robert Schober†, and Falko Dressler, “Rejuvenating IRS: AoI-based Low Overhead Reconfiguration Design,” submitted to IEEE TRANSACTION ON WIRELESS COMMUNICATIONS.
