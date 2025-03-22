@@ -2,9 +2,9 @@
 This project develops an intelligent reflective surface (IRS)-assisted link with a mobile user and evaluates the information age.
 
 ## Description
-This project develops an IRS assisted link between an access point (AP) and a mobile user (MU), where non-line of sight condition is assumed; see the representation in Fig. 1.
-The project features the application where the IRS is continously reconfigured to illuminate the MU with a predefined signal-to-noise (SNR) ratio.
-The IRS reconfiguration policy is determined with the age of information (AoI) concept; further details are given in paper in [1].
+This project develops an IRS-assisted link between an access point (AP) and a mobile user (MU), where a non-line-of-sight (NLOS) condition is assumed; see the representation in Fig. 1.
+The project features an application in which the IRS is continuously reconfigured to illuminate the MU with a predefined signal-to-noise (SNR) ratio.
+The IRS reconfiguration policy is determined by the age of information (AoI) concept; further details are given in the paper in [1].
 
 <figure>
     <p align="center">
@@ -15,9 +15,9 @@ The IRS reconfiguration policy is determined with the age of information (AoI) c
 Fig. 1: Illustration of the mobility of the MU and IRS coverage area.
 </p>
 
-The AP and the MU implements the WiFi standard 802.11ad in the 60 GHz (mmWave band).
-As illustrated in Fig. 2, a the full communication pipeline is integrated for emission, channel propagation through the IRS, and reception (synchronization, demodulation, decoding).
-The channel propagation follows a free-space pathloss between the AP and IRS, and also between the IRS and the MU.
+The AP and the MU implement the WiFi standard 802.11ad in the 60 GHz (mmWave band).
+As illustrated in Fig. 2, the entire communication pipeline is integrated for emission, channel propagation through the IRS, and reception (synchronization, demodulation, decoding).
+Channel propagation follows a free-space path loss between the AP and IRS and also between the IRS and the MU.
 
 <figure>
     <p align="center">
@@ -28,12 +28,31 @@ The channel propagation follows a free-space pathloss between the AP and IRS, an
 Fig. 2: Block diagram for the implemented transmission-reception scheme according to the 802.11ad.
 </p>
 
-The system parameters (accesible in the file `Parameters.mlx`) are given in the following table
+The system parameters (accessible in the file `Parameters.mlx`) are given in the following table:
 
 | Variable | Description | Value |
 | ------------- | ------------- | -------- |
-| $\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$  | 23.2  | |
-
+| | Preamble field length | $4352$ samples |
+| | Maximum data field length | 456 768 samples corresponding to 262 kB of data|
+| | Training field length | $3712$ samples |
+| MCS | Modulation and coding scheme| 12.6|
+| N | Total of IRS reflecting elements| $160\times 160$|
+| $f_s$  | Sampling rate  | $1.76$ GHz|
+| BW  | Bandwidth  | $2640$ MHz|
+| $f_c$  | Carrier frequency, corresponding to Channel 2  | $60.48$ GHz|
+| $P_\mathrm{Tx}$  | Transmitt peak power  | $30$ dBm|
+| $f_s$  | Sampling rate  | $1.76$ GHz|
+| | Number of AP antennas | $8$|
+| | Number of AP beams | $4$|
+| | Gain per AP beam | $9$ dBi|
+| NF | Noise figure | $7$ dB|
+| $\mathrm{N}_\mathrm{0}$ | Thermal noise density | $-174$ dBm/Hz|
+| $\mathrm{N}_\mathrm{int}$ | Receiver interference density | $-165.7$ dBm/Hz|
+| $\mathrm{P}_\mathrm{N}$ | Receiver noise floor | $-70$ dBm|
+| $\mathbf{p}_\mathrm{AP}$ | AP's location | $[2,\, 0,\,2.5]$ m|
+| $\mathbf{p}_\mathrm{IRS}$ | IRS's location | $[2,\, 3,\,3]$ m|
+| $\mathbf{p}_\mathrm{MU}$ | MU's initial location | $[2,\, 3,\,1.5]$ m |
+| $v$ | MU's speed | $1$ m/s
 
 ## Installation
 This code is tested in MATLAB 2023b, and the required toolboxes are listed in the table below.
@@ -61,10 +80,10 @@ Additionally, the following files run the code as described below:
 - `IRS_config.mlx`: This code configures the IRS to evaluate a circular illuminated area around the MU; as depicted in Fig. 3.
 This code also computes the path loss and the SNR in the link AP-IRS-MU as observed by the MU.
 
-- `IRS_802_11ad.mlx`: This file implements the full communication pipeline in the link AP-IRS-MU as follows from Fig. 2.
-This code also evaluates the SNR and the packet error rate (PER) at the MU position.
+- `IRS_802_11ad.mlx`: This file implements the entire communication pipeline in the link AP-IRS-MU as follows from Fig. 2.
+This code also evaluates the SNR and the packet error rate (PER) with the MU position.
 
-Besides, within the current directory there are the following folders:
+Besides, within the current directory, there are the following folders:
 
 - Folder 802.11ad_functions: This folder contains functions needed to implement the communication pipeline in Fig. 2.
 - Folder AoI_functios: This folder contains the code to evaluate the average peak age of information metric (PAoI).
@@ -94,12 +113,12 @@ Fig. 4: Average SNR and BER as evaluated along the perimeter of the circle with 
     </p>
 </figure>
 <p align="center">
-Fig. 5:Average peak age of information PAoI with the IRS update period and various radius for the illuminated area.
+Fig. 5: Average peak age of information PAoI with the IRS update period and various radii for the illuminated area.
 </p>
 
 ## Features
 - **Realistic model for IRS-assisted link in WiFi 802.11ad:** This code evaluates a realistic model for the communication performance with the BER.
-- **Implementation of mobility models for users:** This code evaluates the random way point mobility model and includes random speed and stop time.
+- **Implementation of mobility models for users:** This code evaluates the random waypoint mobility model and includes random speed and stop time.
 - **Optimal evaluation of the IRS update period:** This solution evaluates the optimal update period that maximizes the information freshness in the uplink.
 
 ## Contributing
@@ -137,8 +156,3 @@ This work was supported in part by the Federal Ministry of Education and Researc
     [![Email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:vahid.jamali@tu-darmstadt.de)
 
     [![Website Badge](https://img.shields.io/badge/Website-Homepage-blue?logo=web)](https://www.etit.tu-darmstadt.de/fachbereich/professuren_etit/etit_prof_details_115264.en.jsp)
-    
-
-    
-
-    
