@@ -99,8 +99,7 @@ Interested contributors can contact the project owner. Please refer to the Conta
 ![Licence](https://img.shields.io/github/license/larymak/Python-project-Scripts)
 
 ## Acknowledgements
-We want to thank Dr. Anatolij Zubow from TU Berlin for the valuable comments on this manuscript. This work was
-supported in part by the Federal Ministry of Education and Research (BMBF, Germany) within the 6G Research and Innovation Cluster 6G-RIC under Grant 16KISK020K. Jamali’s work as supported in part by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) within the Collaborative Research Center MAKI (SFB 1053, Project-ID 210487104) and in part by the LOEWE initiative (Hesse, Germany) within the emergenCITY center [LOEWE/1/12/519/03/05.001(0016)/72].
+This work was supported in part by the Federal Ministry of Education and Research (BMBF, Germany) within the 6G Research and Innovation Cluster 6G-RIC under Grant 16KISK020K. Jamali’s work as supported in part by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) within the Collaborative Research Center MAKI (SFB 1053, Project-ID 210487104) and in part by the LOEWE initiative (Hesse, Germany) within the emergenCITY center [LOEWE/1/12/519/03/05.001(0016)/72].
 
 ## References
 <a name="fn1">[1]</a>: Jorge Torres Gómez∗, Joana Angjo∗, Moritz Garkisch†, Vahid Jamali‡, Robert Schober†, and Falko Dressler, “Rejuvenating IRS: AoI-based Low Overhead Reconfiguration Design,” submitted to IEEE TRANSACTION ON WIRELESS COMMUNICATIONS.
@@ -116,3 +115,20 @@ supported in part by the Federal Ministry of Education and Research (BMBF, Germa
     [![LinkedIn](https://img.shields.io/badge/LinkedIn-torresgomez-blue?logo=linkedin&style=flat-square)](https://www.linkedin.com/in/torresgomez/)
 
     [![Website Badge](https://img.shields.io/badge/Website-Homepage-blue?logo=web)](https://www.tkn.tu-berlin.de/team/torres-gomez/)
+
+- **Name:** Joana Angjo
+
+    [![Email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:angjo@ccs-labs.org)
+
+    [![Website Badge](https://img.shields.io/badge/Website-Homepage-blue?logo=web)](https://www.tkn.tu-berlin.de/team/angjo/)
+
+ - **Name:** Vahid Jamali 
+
+    [![Email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:vahid.jamali@tu-darmstadt.de)
+
+    [![Website Badge](https://img.shields.io/badge/Website-Homepage-blue?logo=web)](https://www.etit.tu-darmstadt.de/fachbereich/professuren_etit/etit_prof_details_115264.en.jsp)
+    
+
+    
+
+    
