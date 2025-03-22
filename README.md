@@ -4,7 +4,7 @@ This project develops an intelligent reflective surface (IRS)-assisted link with
 ## Description
 This project develops an IRS assisted link between an access point (AP) and a mobile user (MU), where non-line of sight condition is assumed; see the representation in Fig. 1.
 The project features the application where the IRS is continously reconfigured to illuminate the MU with a predefined signal-to-noise (SNR) ratio.
-The IRS reconfiguration policy is determined with the age of information (AoI) concept; further details are given in paper to be published.
+The IRS reconfiguration policy is determined with the age of information (AoI) concept; further details are given in paper in [1].
 
 <figure>
     <p align="center">
@@ -16,7 +16,8 @@ Fig. 1: Illustration of the mobility of the MU and IRS coverage area.
 </p>
 
 The AP and the MU implements the WiFi standard 802.11ad in the 60 GHz (mmWave band).
-As illustrated in Fig. 2, a the full communication pipeline is integrated for emission and reception (synchronization, demodulation, decoding).
+As illustrated in Fig. 2, a the full communication pipeline is integrated for emission, channel propagation through the IRS, and reception (synchronization, demodulation, decoding).
+The channel propagation follows a free-space pathloss between the AP and IRS, and also between the IRS and the MU.
 
 <figure>
     <p align="center">
@@ -26,6 +27,13 @@ As illustrated in Fig. 2, a the full communication pipeline is integrated for em
 <p align="center">
 Fig. 2: Block diagram for the implemented transmission-reception scheme according to the 802.11ad.
 </p>
+
+The system parameters (accesible in the file `Parameters.mlx`) are given in the following table
+
+| Variable | Description | Value |
+| ------------- | ------------- | -------- |
+| $\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$  | 23.2  | |
+
 
 ## Installation
 This code is tested in MATLAB 2023b, and the required toolboxes are listed in the table below.
@@ -38,7 +46,7 @@ This code is tested in MATLAB 2023b, and the required toolboxes are listed in th
 
 ## Usage
 
-This project directly runs from the file `A_Master_File.mlx`, where three main algorithms evaluates:
+This project directly runs from the file `A_Master_File.mlx`, where three main algorithms evaluate:
 
 1- The SNR in the MU plane, see Fig. 3 below.
 
@@ -46,17 +54,19 @@ This project directly runs from the file `A_Master_File.mlx`, where three main a
 
 3- The optimal update period of the IRS to illuminate the MU, see Fig. 5.
 
-Additionally, the following files run the code described below:
+Additionally, the following files run the code as described below:
 
-- `Parameters.mlx`: This file evaluates all the parameters for the system model, including the position of the communication components, communication frame slots following the 802.11as standard, power, and noise levels, and the user's mobility.
+- `Parameters.mlx`: This file evaluates all the parameters for the system model, including the position of the communication components, communication frame slots following the 802.11ad standard, power, and noise levels, and the user's mobility parameters like speed and stop times.
 
-- `IRS_config,mlx`: This file computes the path loss and the SNR in the link AP-IRS-MU as observed by the MU.
+- `IRS_config.mlx`: This code configures the IRS to evaluate a circular illuminated area around the MU; as depicted in Fig. 3.
+This code also computes the path loss and the SNR in the link AP-IRS-MU as observed by the MU.
 
-- `IRS_802_11ad.mlx`: This file implements the link AP-IRS-MU and evaluates the SNR at the packet error rate (PER) at the MU position within the 802.11ad std.
+- `IRS_802_11ad.mlx`: This file implements the full communication pipeline in the link AP-IRS-MU as follows from Fig. 2.
+This code also evaluates the SNR and the packet error rate (PER) at the MU position.
 
 Besides, within the current directory there are the following folders:
 
-- Folder 802.11ad_functions: This folder contains the code to implement the communication pipeline in Fig. 2.
+- Folder 802.11ad_functions: This folder contains functions needed to implement the communication pipeline in Fig. 2.
 - Folder AoI_functios: This folder contains the code to evaluate the average peak age of information metric (PAoI).
 - Folder datasets: This folder contains mat files to store intermediate calculations for the average PAoI function.
 
