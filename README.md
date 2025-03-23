@@ -122,7 +122,7 @@ Fig. 5: Average peak age of information PAoI with the IRS update period and vari
 - **Optimal evaluation of the IRS update period:** This solution evaluates the optimal update period that maximizes the information freshness in the uplink.
 
 ## Contributing
-Interested contributors can contact the project owner. Please refer to the Contact Information below. We identify further developments for more complex scenarios like estimating the distance to multiple cancer cells.
+Interested contributors can contact the project owner. Please refer to the Contact Information below. We identify further developments for more complex scenarios such as multiple MUs.
 
 ## License
 ![Licence](https://img.shields.io/github/license/larymak/Python-project-Scripts)
